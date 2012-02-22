@@ -10,7 +10,7 @@ namespace undoable_net
         public Memento(Action undo)
         {
             Undo = undo;
-            Redo = () => { };
+            Redo = null;
         }
 
         public Memento(Action undo, Action redo)

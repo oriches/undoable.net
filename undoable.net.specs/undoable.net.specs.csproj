@@ -47,6 +47,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="redoing_when_nothing_has_happend_should_do_nothing.cs" />
     <Compile Include="undoing_when_nothing_has_happend_should_do_nothing.cs" />
+    <Compile Include="when_a_redo_is_not_specified_it_should_only_do_an_undo.cs" />
+    <Compile Include="when_clearing_undos.cs" />
     <Compile Include="when_redoing_a_reference_type_property_modification.cs" />
     <Compile Include="when_redoing_a_value_type_property_modification.cs" />
     <Compile Include="when_undoing_a_reference_type_property_modification.cs" />

@@ -7,13 +7,13 @@ namespace undoable_net.specs
     [Subject("Undoable")]
     public class when_undoing_a_value_type_property_modification
     {
-        private Establish context = () =>
+        Establish context = () =>
         {
             undoable = new Undoable();
             widget = new Widget {Name = OriginalName};
         };
 
-        private Because of = () =>
+        Because of = () =>
         {
             undoable.Add(() => { widget.Name = OriginalName; }, () => { widget.Name = NewName; });
 
@@ -21,11 +21,11 @@ namespace undoable_net.specs
             undoable.Undo();
         };
 
-        private It should_undo_setting_the_name_on_a_widget = () => widget.Name.ShouldEqual(OriginalName);
+        It should_undo_setting_the_name_on_a_widget = () => widget.Name.ShouldEqual(OriginalName);
 
-        private static string OriginalName = "Original Name - " + Guid.NewGuid();
-        private static string NewName = "New name - " + Guid.NewGuid();
-        private static Widget widget;
-        private static Undoable undoable;
+        static string OriginalName = "Original Name - " + Guid.NewGuid();
+        static string NewName = "New name - " + Guid.NewGuid();
+        static Widget widget;
+        static Undoable undoable;
     }
 }

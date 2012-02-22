@@ -14,12 +14,18 @@ namespace undoable_net
             redoStack = new Stack<Memento>();
         }
 
+        public void Add(Action undoAction)
+        {
+            undoStack.Push(new Memento(undoAction));
+            redoStack.Clear();
+        }
+
         public void Add(Action undoAction, Action redoAction)
         {
             undoStack.Push(new Memento(undoAction, redoAction));
             redoStack.Clear();
         }
-
+        
         public void Undo()
         {
             if (undoStack.Count == 0)
@@ -29,7 +35,11 @@ namespace undoable_net
 
             var current = undoStack.Pop();
             current.Undo();
-            redoStack.Push(current);
+
+            if (current.Redo != null)
+            {
+                redoStack.Push(current);
+            }
         }
 
         public void Redo()
