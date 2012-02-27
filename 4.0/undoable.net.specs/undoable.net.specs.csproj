@@ -41,16 +41,18 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="when_there_is_nothing_to_redo.cs" />
+    <Compile Include="when_there_is_nothing_to_undo.cs" />
     <Compile Include="Models\ExpressionHelper.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\Widget.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="redoing_when_nothing_has_happend_should_do_nothing.cs" />
-    <Compile Include="undoing_when_nothing_has_happend_should_do_nothing.cs" />
-    <Compile Include="when_a_redo_is_not_specified_it_should_only_do_an_undo.cs" />
+    <Compile Include="when_there_is_an_undo_but_not_a_redo.cs" />
     <Compile Include="when_clearing_undos.cs" />
     <Compile Include="when_redoing_a_reference_type_property_modification.cs" />
     <Compile Include="when_redoing_a_value_type_property_modification.cs" />
+    <Compile Include="when_there_is_something_to_redo.cs" />
+    <Compile Include="when_there_is_something_to_undo.cs" />
     <Compile Include="when_undoing_a_reference_type_property_modification.cs" />
     <Compile Include="when_undoing_a_value_type_property_modification.cs" />
   </ItemGroup>

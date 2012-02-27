@@ -5,7 +5,7 @@ namespace undoable_net.specs
     using Models;
 
     [Subject("Undoable")]
-    public class when_a_redo_is_not_specified_it_should_only_do_an_undo
+    public class when_there_is_an_undo_but_not_a_redo
     {
         Establish context = () =>
         {

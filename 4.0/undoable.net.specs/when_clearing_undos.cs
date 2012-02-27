@@ -8,28 +8,28 @@ namespace undoable_net.specs
     public class when_clearing_undos_and_redos
     {
         Establish context = () =>
-                                {
-                                    OriginalName = "Original Name - " + Guid.NewGuid();
-                                    NewName = "New Name - " + Guid.NewGuid();
+        {
+            OriginalName = "Original Name - " + Guid.NewGuid();
+            NewName = "New Name - " + Guid.NewGuid();
             
-                                    widget = new Widget { Name = OriginalName };
-                                    undoable = new Undoable();
-                                };
+            widget = new Widget { Name = OriginalName };
+            undoable = new Undoable();
+        };
 
         Because of = () =>
-                         {
-                            exception = Catch.Exception(() =>
-                            {
-                                undoable.Add(() =>{ throw new Exception("Shouldn't get here!"); },
-                                             () =>{ throw new Exception("Shouldn't get here!"); });
+        {
+            exception = Catch.Exception(() =>
+            {
+                undoable.Add(() =>{ throw new Exception("Shouldn't get here!"); },
+                             () =>{ throw new Exception("Shouldn't get here!"); });
 
-                                widget.Name = NewName;
+                widget.Name = NewName;
 
-                                undoable.Clear();
-                                undoable.Undo();
-                                undoable.Redo();
-                            });
-                         };
+                undoable.Clear();
+                undoable.Undo();
+                undoable.Redo();
+            });
+        };
 
         It should_not_have_done_an_undo = () => widget.Name.ShouldEqual(NewName);
 
