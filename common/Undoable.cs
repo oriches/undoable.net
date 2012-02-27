@@ -14,6 +14,16 @@ namespace undoable_net
             redoStack = new Stack<Memento>();
         }
 
+        public bool CanUndo
+        {
+            get { return undoStack.Count != 0; }
+        }
+
+        public bool CanRedo
+        {
+            get { return redoStack.Count != 0; }
+        }
+
         public void Add(Action undoAction)
         {
             undoStack.Push(new Memento(undoAction));
