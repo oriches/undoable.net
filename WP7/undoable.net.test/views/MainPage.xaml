@@ -32,7 +32,7 @@
                        Text="UNDO REDO"
                        Style="{StaticResource PhoneTextNormalStyle}" />
             <TextBlock x:Name="PageTitle"
-                       Text="input form..."
+                       Text="widget form..."
                        Margin="9,-7,0,0"
                        Style="{StaticResource PhoneTextTitle1Style}" />
         </StackPanel>
@@ -40,19 +40,56 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel"
               Grid.Row="1"
-              Margin="12,0,12,0"></Grid>
+              Margin="12,0,12,0">
+            <TextBox Height="72"
+                     HorizontalAlignment="Left"
+                     Margin="0,200,0,0"
+                     Name="widgetDescription"
+                     VerticalAlignment="Top"
+                     Width="450"
+                     TextChanged="HandleTextChanged"
+                     Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=Explicit}" />
+            <TextBox Height="72"
+                     HorizontalAlignment="Left"
+                     Margin="0,25,0,0"
+                     Name="widgetIdentifier"
+                     VerticalAlignment="Top"
+                     Width="456"
+                     TextChanged="HandleTextChanged"
+                     Text="{Binding Identifier, Mode=TwoWay, UpdateSourceTrigger=Explicit}" />
+            <TextBlock Height="30"
+                       HorizontalAlignment="Left"
+                       Margin="12,6,0,0"
+                       Name="textBlock1"
+                       Text="Widget Id:"
+                       VerticalAlignment="Top" />
+            <TextBlock Height="30"
+                       HorizontalAlignment="Left"
+                       Margin="12,90,0,0"
+                       Name="textBlock2"
+                       Text="Widget Name:"
+                       VerticalAlignment="Top" />
+            <TextBox Height="72"
+                     HorizontalAlignment="Left"
+                     Margin="0,112,0,0"
+                     Name="widgetName"                     
+                     VerticalAlignment="Top"
+                     Width="456"
+                     TextChanged="HandleTextChanged"
+                     Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=Explicit}"/>                
+            <TextBlock Height="30"
+                       HorizontalAlignment="Left"
+                       Margin="12,178,0,0"
+                       Name="textBlock3"
+                       Text="Widget Description:"
+                       VerticalAlignment="Top" />
+        </Grid>
     </Grid>
 
     <!--Sample code showing usage of ApplicationBar-->
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True"
-                              IsMenuEnabled="False">
-            <shell:ApplicationBarIconButton IconUri="/icons/appbar.back.rest.png"
-                                            Text="undo"
-                                            IsEnabled="{Binding IsCanUndoEnabled}"/>
-            <shell:ApplicationBarIconButton IconUri="/icons/appbar.next.rest.png"
-                                            Text="redo"
-                                            IsEnabled="{Binding IsCanRedoEnabled}"/>
+                              IsMenuEnabled="False">           
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 

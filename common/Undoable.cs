@@ -2,9 +2,13 @@ namespace undoable_net
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Linq.Expressions;
 
-    public class Undoable
+    public class Undoable : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+
         private readonly Stack<Memento> undoStack;
         private readonly Stack<Memento> redoStack;
 
@@ -28,12 +32,18 @@ namespace undoable_net
         {
             undoStack.Push(new Memento(undoAction));
             redoStack.Clear();
+
+            RaisePropertyChanged(() => CanUndo);
+            RaisePropertyChanged(() => CanRedo);
         }
 
         public void Add(Action undoAction, Action redoAction)
         {
             undoStack.Push(new Memento(undoAction, redoAction));
             redoStack.Clear();
+
+            RaisePropertyChanged(() => CanUndo);
+            RaisePropertyChanged(() => CanRedo);
         }
         
         public void Undo()
@@ -50,6 +60,9 @@ namespace undoable_net
             {
                 redoStack.Push(current);
             }
+
+            RaisePropertyChanged(() => CanUndo);
+            RaisePropertyChanged(() => CanRedo);
         }
 
         public void Redo()
@@ -62,12 +75,23 @@ namespace undoable_net
             var current = redoStack.Pop();
             current.Redo();
             undoStack.Push(current);
+
+            RaisePropertyChanged(() => CanUndo);
+            RaisePropertyChanged(() => CanRedo);
         }
         
         public void Clear()
         {
             redoStack.Clear();
             undoStack.Clear();
+
+            RaisePropertyChanged(() => CanUndo);
+            RaisePropertyChanged(() => CanRedo);
+        }
+
+        protected void RaisePropertyChanged<T>(Expression<Func<T>> expression)
+        {
+            PropertyChanged(this, new PropertyChangedEventArgs(ExpressionHelper.Name(expression)));
         }
     }
 }

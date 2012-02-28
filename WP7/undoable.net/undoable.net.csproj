@@ -54,6 +54,9 @@
     <Compile Include="..\..\common\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="..\..\common\ExpressionHelper.cs">
+      <Link>ExpressionHelper.cs</Link>
+    </Compile>
     <Compile Include="..\..\common\Memento.cs">
       <Link>Memento.cs</Link>
     </Compile>
