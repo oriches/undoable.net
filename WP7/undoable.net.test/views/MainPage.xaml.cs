@@ -1,4 +1,4 @@
-﻿namespace undoable.net.test
+﻿namespace undoable.net.test.views
 {
     using Microsoft.Phone.Controls;
 
